@@ -1,9 +1,10 @@
 const express = require('express');
-
+const bodyparser = require("body-parser");
 const app = express()
 var dbConnection = require('./db.js')
 var productsRoute = require('./routes/productRoute')
 
+app.use(bodyparser.json());
 app.use('/api/products', productsRoute)
 
 app.get("/", (req,res) => {
